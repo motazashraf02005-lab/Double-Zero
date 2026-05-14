@@ -145,11 +145,13 @@ export default function App() {
   const ai = useRef<GoogleGenAI | null>(null);
 
   useEffect(() => {
-    // Check if process.env.GEMINI_API_KEY is available
-    const apiKey = typeof process.env !== 'undefined' ? process.env.GEMINI_API_KEY : undefined;
+    // Check for both GEMINI_API_KEY and GEMINI_API_KE2
+    const apiKey = typeof process.env !== 'undefined' 
+      ? (process.env.GEMINI_API_KE2 || process.env.GEMINI_API_KEY) 
+      : undefined;
     
     if (!apiKey) {
-      setError("Gemini API key is missing. If you're using Vercel, please add GEMINI_API_KEY to your Environment Variables.\n\nالمفتاح مش موجود. لو شغال على Vercel، اتأكد إنك ضفت GEMINI_API_KEY في الـ Settings.");
+      setError("Gemini API key is missing. If you're using Vercel, please add GEMINI_API_KE2 to your Environment Variables.\n\nالمفتاح مش موجود. لو شغال على Vercel، اتأكد إنك ضفت GEMINI_API_KE2 في الـ Settings.");
       return;
     }
     ai.current = new GoogleGenAI({ apiKey: apiKey });
