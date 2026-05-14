@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --brand: #C94B2A;
+    --cream: #F5EFE6;
+    --cream-2: #E8DDD1;
+    --dark: #1C1C1C;
+  }
+
+  body {
+    @apply bg-[var(--cream)] text-[var(--dark)] antialiased;
+  }
+}
+
+@layer utilities {
+  @keyframes dz-bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-7px); }
+  }
+
+  @keyframes dz-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes dz-splash {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes dz-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .dz-msg {
+    animation: dz-in 0.3s ease forwards;
+  }
+
+  .dz-chip:hover:not(:disabled) {
+    background-color: var(--brand) !important;
+    color: white !important;
+  }
+
+  .dz-send:hover:not(:disabled) {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(201, 75, 42, 0.4) !important;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--cream-2);
+    border-radius: 4px;
+  }
+
+  .dz-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dz-start:hover {
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow: 0 16px 40px rgba(201, 75, 42, 0.35) !important;
+  }
+}
+
